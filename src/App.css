@@ -1,38 +1,117 @@
-.App {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #101820;
+  color: #fff;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.game {
+  padding: 40px 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+h1 {
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  color: #f2aa4c;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.scoreboard div {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.fade {
+  animation: fadePop 0.5s ease;
+}
+
+@keyframes fadePop {
+  0% {
+    opacity: 0.2;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin: 30px auto;
+  transition: opacity 0.3s ease;
+}
+
+.board.fade-out {
+  opacity: 0;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background: #1c1c1c;
+  border: 2px solid #f2aa4c;
+  font-size: 2.5rem;
+  font-weight: bold;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  transition: background 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.square:hover {
+  background: #333;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.square .marker {
+  opacity: 0;
+  transform: scale(0.6);
+  animation: fadeInMarker 0.4s forwards;
+}
+
+@keyframes fadeInMarker {
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: scale(1);
   }
+}
+
+.winner {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: #00ffcc;
+  transition: opacity 0.3s;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #f2aa4c;
+  border: none;
+  color: #101820;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #ffc74c;
 }
